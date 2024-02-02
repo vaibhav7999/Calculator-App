@@ -1,22 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:last/screens/home_screen.dart';
 
 class CalculatorApp extends StatelessWidget {
   const CalculatorApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    
-    return  MaterialApp(
-      theme : ThemeData.dark(),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Center (child: Text("Calculator App")),
-        ),
-      ),
+    return MaterialApp(
+      theme: ThemeData.dark(),
+      home: const HomeScreen(),
     );
   }
 }
-void main(){
+
+
+
+void main() {
   runApp(const CalculatorApp());
 }
-
