@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-//import 'package:flutter/widgets.dart';
-import 'package:last/widget/textfield.dart'; // Ensure this path is correct
+import 'package:last/widget/textfield.dart';
 
+import 'data.dart';
+
+//import "../widget/buttons.dart";
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -11,47 +13,74 @@ class HomeScreen extends StatelessWidget {
       color: Color.fromARGB(255, 22, 22, 22),
       borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
     );
-    final screenHeight = MediaQuery.of(context).size.height;
+    //final screenHeight = MediaQuery.of(context).size.height;
     const padding = EdgeInsets.symmetric(horizontal: 45, vertical: 45);
     const margin = EdgeInsets.all(30);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Center(child: Text("Calculator App")),
-      ),
-      body: Column(
-        children: [
-          const CustomTextField(),
-          Container(
-            height: screenHeight * 0.6,
-            width: double.infinity,
-            padding: padding,
-            decoration: decoration,
-            margin: margin,
-            child: const Column(
-              children: [
-                Row(
+        appBar: AppBar(
+          title: const Center(child: Text("Calculator App")),
+        ),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              const CustomTextField(),
+              Container(
+                width: double.infinity,
+                padding: padding,
+                decoration: decoration,
+                margin: margin,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Material(
-                      elevation: 3,
-                      color: Colors.amber,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: List.generate(4, (index) => buttonList[index]),
                     ),
-                    CircleAvatar(
-                      radius: 36,
-                      child: Text(
-                        "1",
-                        style: TextStyle(
-                          fontSize: 28,
-                          fontWeight: FontWeight.bold,),
-                      ),
-                    )
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children:
+                          List.generate(4, (index) => buttonList[index + 4]),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children:
+                          List.generate(4, (index) => buttonList[index + 8]),
+                    ),
+                    Row(
+                      children: [
+                        Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: List.generate(
+                                  3, (index) => buttonList[index + 12]),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: List.generate(
+                                  3, (index) => buttonList[index + 15]),
+                            ),
+                          ],
+                        ),
+                        Container(
+                          height: 160,
+                          width: 70,
+                          decoration: BoxDecoration(
+                            color: Colors.blue,
+                            borderRadius: BorderRadius.circular(40),
+                          ),
+                          child: const Center(child: 
+                          Text("=",
+                          ),),
+                        )
+                      ],
+                    ),
                   ],
-                )
-              ],
-            ),
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
-    );
+        ));
   }
 }

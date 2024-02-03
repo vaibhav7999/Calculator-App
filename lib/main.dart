@@ -13,8 +13,6 @@ class CalculatorApp extends StatelessWidget {
   }
 }
 
-
-
 void main() {
   runApp(const CalculatorApp());
 }
