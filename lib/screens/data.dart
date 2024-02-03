@@ -54,17 +54,11 @@ List<Widget>buttonList= [
     label:"3",
   ),
   const Button1(
-    label:"=",
+    label:"%",
     textcolor: Colors.blue,
   ),
     const Button1(
-    label: "7", // Set the text color to blue
-  ),
-  const Button1(
-    label:"%",
-  ),
-  const Button1(
-    label:"0",
+    label: ".", // Set the text color to blue
   ),
   const Button1(
     label:".",

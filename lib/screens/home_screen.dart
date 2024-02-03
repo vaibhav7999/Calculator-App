@@ -1,22 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:last/widget/cal_button.dart';
 import 'package:last/widget/textfield.dart';
-
 import 'data.dart';
 
 //import "../widget/buttons.dart";
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     const BoxDecoration decoration = BoxDecoration(
       color: Color.fromARGB(255, 22, 22, 22),
       borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
     );
-    //final screenHeight = MediaQuery.of(context).size.height;
     const padding = EdgeInsets.symmetric(horizontal: 45, vertical: 45);
     const margin = EdgeInsets.all(30);
-
     return Scaffold(
         appBar: AppBar(
           title: const Center(child: Text("Calculator App")),
@@ -31,7 +28,7 @@ class HomeScreen extends StatelessWidget {
                 decoration: decoration,
                 margin: margin,
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -48,33 +45,31 @@ class HomeScreen extends StatelessWidget {
                           List.generate(4, (index) => buttonList[index + 8]),
                     ),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Column(
+                        Expanded(
+                            child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: List.generate(
                                   3, (index) => buttonList[index + 12]),
                             ),
+                            const SizedBox(
+                              height: 20,
+
+                            ),
                             Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: List.generate(
                                   3, (index) => buttonList[index + 15]),
                             ),
                           ],
+                          )  
                         ),
-                        Container(
-                          height: 160,
-                          width: 70,
-                          decoration: BoxDecoration(
-                            color: Colors.blue,
-                            borderRadius: BorderRadius.circular(40),
-                          ),
-                          child: const Center(child: 
-                          Text("=",
-                          ),),
-                        )
-                      ],
+                        const CalculateButton(),
+                      ]
                     ),
                   ],
                 ),
@@ -84,3 +79,4 @@ class HomeScreen extends StatelessWidget {
         ));
   }
 }
+
